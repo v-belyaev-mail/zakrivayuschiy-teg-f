@@ -9,3 +9,91 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sparks {
+  from {
+    fill: inherit;
+  }
+  to {
+    fill: var(--like-fill-color, #FF0000);
+  }
+}
+
+.button {
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  transition: transform 0.3s ease;
+}
+
+.card__icon-button {
+  transition: border-color 0.3s ease;
+}
+
+.card__icon-button .main-body {
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button .contour {
+  transition: fill 0.1s linear;
+}
+
+.card__icon-button .core {
+  transition: fill 0.3s linear;
+  transition-delay: 0.03s;
+}
+
+.card__icon-button:hover .core {
+  fill: var(--like-contour-color, #000);
+  transition-delay: unset;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--like-contour-color, #000);
+  transition-delay: 0.05s;
+}
+
+.card__icon-button:active .core {
+  fill: var(--like-fill-color, #FF0000);
+  transition-delay: unset;
+}
+
+.card__icon-button:active .main-body {
+  fill: var(--like-fill-color, #FF0000);
+  transition-delay: 0.05s;
+}
+
+.card__icon-button .like-icon.is-liked .contour {
+  fill: var(--like-fill-color, #FF0000);
+  transition-delay: 0.06s;
+  transition-duration: 0.03s;
+}
+
+.card__icon-button .like-icon.is-liked  .core {
+  fill: var(--like-fill-color, #FF0000);
+  transition-delay: unset;
+}
+
+.card__icon-button .like-icon.is-liked  .main-body {
+  fill: var(--like-fill-color, #FF0000);
+  transition-delay: 0.05s;
+}
+
+.card__icon-button .like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: pulse 0.3s 0.1s ease-in;
+}
+
+.card__icon-button .like-icon.is-liked .sparks {
+  animation: sparks 0.3s 0.3s ease-in;
+}

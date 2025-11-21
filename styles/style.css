@@ -10,7 +10,311 @@
 
 */
 
+.font-accent {
+  font-family: var(--accent-font-family, 'PressStart2P'), monospace;
+}
+
+.button {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0;
+  position: relative;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--main-color, #000);
+  inline-size: 100%;
+  block-size: 100%;
+  transform-origin: top left;
+  transform: scale(0, 0.8);
+}
+
+.button:hover::before {
+  transform: scale(1);
+}
+
+.button:hover .button__text {
+  background-blend-mode: overlay;
+}
+
+.button.card__icon-button::before {
+  content: unset;
+}
+
+.button.card__icon-button:focus {
+  box-shadow: none;
+}
+
+.button:focus-visible, .button:focus {
+  /*outline: 2px solid currentColor;*/
+  box-shadow: 2px 2px 0 currentColor;
+}
+
 .page {
+  font-family: var(--main-font-family, 'Inter'), monospace;
+  font-variation-settings: "wght" var(--font-wght-normal, 410);
+  font-size: 18px;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: var(--main-bg-image, repeating-linear-gradient(to left, #d3d3d3 0 2px, #d3d3d300 2px 4px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-color, #000);
+}
+
+.header {
+  inline-size: var(--section-inline-size, clamp(23.438rem, 30.516vw + 16.285rem, 43.75rem));
+  background-color: var(--background-color, #FFF);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  outline: 2px solid currentColor;
+  padding-block: clamp(7.5rem, 0.939vw + 7.28rem, 8.125rem);
+  margin-block-start: 100px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.header__logo {
+  display: block;
+  font-size: clamp(3.063rem, 1.502vw + 2.71rem, 4.063rem);
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.845vw + 0.677rem, 1.438rem);
+}
+
+.main {
+  margin-block-end: 100px;
+  margin-block-start: 98px;
+  inline-size: var(--section-inline-size, clamp(23.438rem, 30.516vw + 16.285rem, 43.75rem));
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  gap: 50px;
+}
+
+.card {
+  background-color: var(--background-color, #FFF);
+  border: 2px solid currentColor;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__title {
+  font-size: var(--font-size-normal, 18px);
+  font-variation-settings: "wght" var(--font-wght-bold, 715);
+  padding: 5px 10px;
+}
+
+.card__image {
+  position: relative;
+  overflow: hidden;
+  border-block: 2px solid currentColor;
+}
+
+.card__image img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: right;
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  text-shadow: 0 1px var(--background-color, #FFF);
+}
+
+.card__content {
+  padding: 25px;
+}
+
+.card__description {
+  line-height: 21px;
+}
+
+.card__description + .card__description {
+  margin-block-start: 25px;
+}
+
+.card__footer {
+  padding-inline: 25px;
+  padding-block-end: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card__like {
+  display: flex;
+  gap: 5px;
+  block-size: 38px;
+}
+
+.card__like-button {
+  background: transparent;
+  min-inline-size: 130px;
+  block-size: 100%;
+  border: 2px solid currentColor;
+}
+
+.button__text {
+  line-height: 0.9;
+  font-size: 14px;
+  color: var(--background-color, #FFF);
+  mix-blend-mode: difference;
+}
+
+.card__icon-button {
+  background: transparent;
+  border: 2px solid transparent;
+}
+
+.card__icon-button:focus-visible {
+  border-color: currentColor;
+}
+
+.memories {
+  margin-block-start: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.memories__button {
+  background-color: var(--background-color, #FFF);
+  border: 2px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 55px;
+  padding: 15px 18px;
+}
+
+.memories__button-icon {
+  block-size: 21px;
+  inline-size: 21px;
+  color: var(--background-color, #FFF);
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  padding: 0;
+  max-width: clamp(21.313rem, 1.127vw + 21.048rem, 22.063rem);
+  border: 2px solid var(--main-color, #000);
+}
+
+.dialog::backdrop {
+  background-color: var(--main-color, #000);
+  opacity: 0.75;
+}
+
+.memories-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 28px;
+}
+
+.memories-dialog-icon {
+  inline-size: 39px;
+  block-size: 39px;
+  flex-shrink: 0;
+}
+
+.memories-dialog__content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.memories-dialog__text {
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.memories-dialog__button {
+  text-transform: uppercase;
+  background: transparent;
+  inline-size: 100%;
+  block-size: 38px;
+  padding: 10px 0;
+  border: 2px solid currentColor;
+}
+
+.filter--contrast {
+  filter: contrast(0.5);
+}
+
+.filter--brightness {
+  filter: brightness(2.5);
+}
+
+.filter--hue {
+  filter: hue-rotate(45deg);
+}
+
+.filter--inversion {
+  filter: invert(1);
+}
+
+.filter--sepia {
+  filter: sepia(1);
+}
+
+.filter--blur {
+  filter: blur(10px);
+}
+
+.filter--contrast-blur {
+  filter: hue-rotate(90deg) contrast(0.6) blur(2px);
+}
+
+@media (width <= 375px) {
+  .card__title {
+    padding: 4px 10px;
+  }
+
+  .memories__button {
+    flex-direction: column;
+  }
+
+  .memories__button-icon {
+    block-size: 28px;
+    inline-size: 28px;
+  }
+
+  .header {
+    outline: none;
+    border: 2px solid currentColor;
+  }
+}
+
+@supports (-webkit-text-stroke: 1px var(--text-stroke-color, #FFF)) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--text-stroke-color, #FFF);
+    paint-order: stroke; /* Outer align in figma*/
+  }
 }
