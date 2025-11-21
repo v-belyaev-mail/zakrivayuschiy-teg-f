@@ -93,6 +93,7 @@
 
 .header__title {
   font-size: clamp(0.875rem, 0.845vw + 0.677rem, 1.438rem);
+  font-weight: 400;
 }
 
 .main {
