@@ -11,7 +11,7 @@
 */
 
 .font-accent {
-  font-family: var(--accent-font-family, 'PressStart2P'), monospace;
+  font-family: var(--accent-font-family, 'PressStart2P'), fantasy;
 }
 
 .button {
@@ -32,7 +32,7 @@
   inline-size: 100%;
   block-size: 100%;
   transform-origin: top left;
-  transform: scale(0, 0.8);
+  transform: scale(0, 1);
 }
 
 .button:hover::before {
@@ -253,6 +253,7 @@
 .memories-dialog__text {
   line-height: 1.5;
   font-size: 14px;
+  text-transform: uppercase;
 }
 
 .memories-dialog__button {
